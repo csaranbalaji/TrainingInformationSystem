@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Student extends CI_Controller
+class Trainee extends CI_Controller
 {     public function __construct()
      {
           parent::__construct();
@@ -10,7 +10,7 @@ class Student extends CI_Controller
           $this->load->database();
           $this->load->library('form_validation');
           //load the login model
-          $this->load->model('student_model');
+          $this->load->model('trainee_model');
      }
      public function index()
      {
@@ -23,7 +23,7 @@ class Student extends CI_Controller
           if ($this->form_validation->run() == FALSE)
           {
                //validation fails
-               $this->load->view('student_login_view');
+               $this->load->view('trainee_login_view');
           }
           else
           {
@@ -45,12 +45,12 @@ class Student extends CI_Controller
                     else
                     {
                          $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
-                         redirect('student/index');
+                         redirect('trainee/index');
                     }
                }
                else
                {
-                    redirect('student/index');
+                    redirect('trainee/index');
                }
           }
      }
