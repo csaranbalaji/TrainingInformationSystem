@@ -2,19 +2,19 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Page</title>
+    <title>Trainee Page</title>
     <link href="<?php echo base_url("assets/css/bootstrap.css"); ?>" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="container-fluid">
 <ul class="nav nav-tabs">
-  <li><a href="javascript:void(0)" onclick="openTab('Marks')">Marks Entry</a></li>
-  <li><a href="javascript:void(0)" onclick="openTab('Assignment')">Assignment</a></li>
-  <li><a href="javascript:void(0)" onclick="openTab('File')">File Upload</a></li>
+  <li><a href="javascript:void(0)" onclick="openTab('Profile')">View Profile</a></li>
+  <li><a href="javascript:void(0)" onclick="openTab('Test')">Test</a></li>
+  <li><a href="javascript:void(0)" onclick="openTab('Project')">Project Status</a></li>
   <li class="navbar-right"><a href="http://localhost/StudentAssessmentSystem/index.php/student">Log Out</a></li>
 </ul>
 
-<div id="Marks" class="student row">
+<div id="Profile" class="student row">
 	  <div class="col-md-7 col-md-offset-3">
 		  <br><br><br>
 		   <table class="table table-striped table-hover table-bordered" align="center">
@@ -36,35 +36,33 @@
 		   </table>
 	  </div>
 </div>
-<div id="Assignment" class="student">
+<div id="Test" class="student">
 	 <div class="col-lg-12 col-sm-12">
 		 <br><br><br>
 		   <table class="table table-striped table-hover table-bordered" >
 				<thead>
 					 <tr>
-						  <th>Class</th>
-						  <th>Subject</th>
-						  <th>Question</th>
-					 </tr>
+						  <th>Project Name</th>
+						  <th>Status</th>
+					</tr>
 				</thead>
 				<tbody>
 					 <?php for ($i = 0; $i < count($deptlist); ++$i) { ?>
 						  <tr>
-							   <td><?php echo $deptlist[$i]->class; ?></td>
-							   <td><?php echo $deptlist[$i]->subject; ?></td>
-							   <td><?php echo $deptlist[$i]->question; ?></td>
+							   <td><?php echo $deptlist[$i]->pname; ?></td>
+							   <td><?php echo $deptlist[$i]->pstatus; ?></td>
 							   <?php } ?>
 							   <?php $attributes = array("name" => "registrationform");
 									echo form_open("assignment/register", $attributes);?>
-							   <td><textarea name="ans" class="form-control" rows='3' placeholder='Type your Answer ...'></textarea></td>
-							   <td><button name="submit" type="submit" class="btn btn-default">Submit</button></td>
+							   <td><textarea name="ans" class="form-control" rows='3' placeholder='Type your Status ...'></textarea></td>
+							   <td><button name="submit" type="submit" class="btn btn-default">Update Status</button></td>
 						  </tr><?php echo form_close(); ?>
 					 
 				</tbody>
 		   </table>
 	  </div>
 </div>
-<div align="center" id="File" class="student">
+<div align="center" id="Project" class="student">
 	<br><br><br>
 	<table class="table table-striped table-hover table-bordered">
 		<thead>
