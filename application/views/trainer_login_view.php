@@ -18,14 +18,11 @@
 <div class="container">
      <div class="row">
           <div class="col-lg-6 col-sm-6">
-               <h1>AssessmentSystem</h1>
+               <h1>TrainingSystem</h1>
           </div>
           <div class="col-lg-6 col-sm-6">
                
-               <ul class="nav nav-pills pull-right" style="margin-top:20px">
-                    <li class="active"><a href="#">Login</a></li>
-                    <li><a href="http://localhost/StudentAssessmentSystem/index.php/user">Signup</a></li>
-               </ul>
+               
                
           </div>
      </div>
@@ -37,9 +34,9 @@
           <div class="col-lg-4 col-sm-4 well">
           <?php 
           $attributes = array("class" => "form-horizontal", "id" => "loginform", "name" => "loginform");
-          echo form_open("staff/index", $attributes);?>
+          echo form_open("trainer/index", $attributes);?>
           <fieldset>
-               <legend>Staff Login</legend>
+               <legend>Trainer Login</legend>
                <div class="form-group">
                <div class="row colbox">
                <div class="col-lg-4 col-sm-4">

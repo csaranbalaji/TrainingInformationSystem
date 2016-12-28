@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Staff_model extends CI_Model
+class Trainer_model extends CI_Model
 {
      function __construct()
      {
@@ -10,7 +10,7 @@ class Staff_model extends CI_Model
      //get the username & password from tbl_usrs
      function get_user($usr, $pwd)
      {
-          $sql = "select fname from staff where email = '" . $usr . "' and password = '" . md5($pwd) ."'" ;
+          $sql = "select fname from trainer where email = '" . $usr . "' and password = '" . $pwd ."'" ;
           $query = $this->db->query($sql);
           $res = $query->result();
           $row = $res[0];  

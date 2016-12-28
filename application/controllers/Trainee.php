@@ -31,7 +31,7 @@ class Trainee extends CI_Controller
                if ($this->input->post('btn_login') == "Login")
                {
                     //check if username and password is correct
-                    $usr_result = $this->student_model->get_user($username, $password);
+                    $usr_result = $this->trainee_model->get_user($username, $password);
                     if ($usr_result > 0) //active user record is present
                     {
                          //set the session variables
