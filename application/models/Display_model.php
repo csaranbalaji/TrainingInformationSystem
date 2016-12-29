@@ -8,10 +8,10 @@ class Display_model extends CI_Model{
      }
 
      //read the list from db
-     function get_course_list()
+     function get_profile_list()
      {	
 		 $id=get_cookie('id');
-          $sql = 'select id,fname,email,course from trainee';
+          $sql = 'select * from trainee where id='.$id;
           $query = $this->db->query($sql);
           $result = $query->result();
           return $result;
@@ -19,25 +19,26 @@ class Display_model extends CI_Model{
      
      function get_question_list()
      {
-          $sql = 'select * from questions where course="Git and SVN"';
+          $sql = 'select * from question where course="Git & SVN"';
           $query = $this->db->query($sql);
           $result = $query->result();
           return $result;
      }
      
-     function status($status)
+     function get_project()
      {
 		 $id=get_cookie('id');
-		  $sql = "update project set pstatus = '" . $status . "' where id=".$id ;
-          $query = $this->db->query($sql);
-	 }
-	 
-	 function get_file_list()
-     {	
-		 
-          $sql = "select marks from ";
+          $sql = 'select * from project where id='.$id;
           $query = $this->db->query($sql);
           $result = $query->result();
           return $result;
      }
+     
+     function update_status($status)
+     {
+		 $id=get_cookie('id');
+		  $sql = "update project set pstatus = '" . $status . "' where id=".$id ;
+          return $this->db->query($sql);
+	 }
+	 
 }

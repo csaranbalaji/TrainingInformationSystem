@@ -6,28 +6,62 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
           parent::__construct();
           $this->load->helper('url');
           $this->load->database();
+          $this->load->library(array('session', 'form_validation'));
+          
+          //load the model
+          $this->load->model('display_model'); 
      }
 
      public function index()
      {
-          //load the model
-          $this->load->model('display_model');  
+           
           
           //call the model function to get the data
-          $markresult = $this->display_model->get_mark_list();           
-          $data['marklist'] = $markresult;
+          $profile = $this->display_model->get_profile_list();           
+          $data['profile'] = $profile;
           
             
           //call the model function to get the data
-          $assignresult = $this->display_model->get_assignment_list();           
-          $data['deptlist'] = $assignresult;
+          $quesresult = $this->display_model->get_question_list();           
+          $data['questlist'] = $quesresult;
           
            
           //call the model function to get the data
-          $fileresult = $this->display_model->get_file_list();           
-          $data['filelist'] = $fileresult;
+          $projectresult = $this->display_model->get_project();           
+          $data['project'] = $projectresult;
           
           //load the view
           $this->load->view('display_view',$data);
      }
+     function update()
+    {
+        //set validation rules
+        $this->form_validation->set_rules('status', 'Status', 'trim|required');
+        
+        
+        //validate form input
+        if ($this->form_validation->run() == FALSE)
+        {
+            // fails
+            echo nl2br("\n <div class='alert alert-danger' align='center'><strong>Failed!</strong> Please Check the Respective Tab.</div>");
+            $this->load->view('display_view');
+        }
+        else
+        {
+			$status=$this->input->post('status');
+            // insert form data into database
+            if ($this->display_model->update_status($status))
+            {
+				echo nl2br("\n <div class='alert alert-success' align='center'><strong>Success!</strong> Status Has Been Updated Successfully.</div>");
+				redirect('display');
+            }
+            else
+            {
+                // error
+                $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Oops! Error.  Please try again later!!!</div>');
+                redirect('display');
+            }
+        }
+    }
+    
 }
