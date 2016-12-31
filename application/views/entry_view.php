@@ -2,103 +2,104 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Page</title>
+    <title>Trainer Page</title>
+    <script src="<?php echo base_url("assets/js/jquery.min.js"); ?>"></script>
     <link href="<?php echo base_url("assets/css/bootstrap.css"); ?>" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="container-fluid">
 <ul class="nav nav-tabs">
-  <li><a href="javascript:void(0)" onclick="openTab('Marks')">Marks Entry</a></li>
-  <li><a href="javascript:void(0)" onclick="openTab('Assignment')">Assignment</a></li>
-  <li><a href="javascript:void(0)" onclick="openTab('File')">File Upload</a></li>
-  <li class="navbar-right"><a href="http://localhost/StudentAssessmentSystem/index.php/staff">Log Out</a></li>
+  <li><a href="javascript:void(0)" onclick="openTab('Profile')">View Students</a></li>
+  <li><a href="javascript:void(0)" onclick="openTab('Test')">Test Results</a></li>
+  <li><a href="javascript:void(0)" onclick="openTab('Project')">Project Status</a></li>
+  <li class="navbar-right"><a href="http://localhost/TrainingInformationSystem/index.php/trainer">Log Out</a></li>
 </ul>
 
-<div id="Marks" class="staff row">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4>Marks Entry Form</h4>
-            </div>
-            <div class="panel-body">
-                <?php $attributes = array("name" => "registrationform");
-                echo form_open("entry/register", $attributes);?>
-                <div class="form-group">
-                    <label for="name">Student ID</label>
-                    <input class="form-control" name="sid" placeholder="ID Number" type="number" />
-                    <span class="text-danger"><?php echo form_error('sid'); ?></span>
-                </div>
-
-               
-                <div class="form-group">
-                    <label for="subject">Subject 1</label>
-                    <input class="form-control" name="s1" placeholder="Mark 1" type="number" />
-                    <span class="text-danger"><?php echo form_error('s1'); ?></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="subject">Subject 2</label>
-                    <input class="form-control" name="s2" placeholder="Mark 2" type="number" />
-                    <span class="text-danger"><?php echo form_error('s2'); ?></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="subject">Subject 3</label>
-                    <input class="form-control" name="s3" placeholder="Mark 3" type="number" />
-                    <span class="text-danger"><?php echo form_error('s3'); ?></span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="subject">Subject 4</label>
-                    <input class="form-control" name="s4" placeholder="Mark 4" type="number" />
-                    <span class="text-danger"><?php echo form_error('s4'); ?></span>
-                </div>
-
-                <div class="form-group">
-                    <button name="submit" type="submit" class="btn btn-default">Go</button>
-                    <button name="cancel" type="reset" class="btn btn-default">Cancel</button>
-                </div>
-                <?php echo form_close(); ?>
-                <?php echo $this->session->flashdata('msg'); ?>
-            </div>
-        </div>
-    </div>
+<div id="Profile" class="traine row">
+	  <div class="col-md-7 col-md-offset-3">
+		  <br><br><br>
+		   <table class="table table-striped table-hover table-bordered" align="center">
+				<thead>
+					 <tr>
+						  <th>ID</th>
+						  <th>Name</th>
+						  <th>Course</th>
+					</tr>
+				</thead>
+				<tbody>
+					 <?php for ($i = 0; $i < count($studlist); ++$i) { ?>
+						  <tr><td><?php echo $studlist[$i]->id; ?></td>
+						  <td><?php echo $studlist[$i]->fname; ?></td>
+						  <td><?php echo $studlist[$i]->course; ?></td></tr>
+					<?php } ?>
+				</tbody>
+		   </table>
+	  </div>
 </div>
-<div id="Assignment" class="staff">
+
+<div align="center" id="Test" class="trainer">
+	<br><br><br>
 	<div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4>Assignment Entry</h4>
+                <h4>Questions Entry</h4>
             </div>
             <div class="panel-body">
                 <?php $attributes = array("name" => "postform");
-                echo form_open("entry/post", $attributes);?>
+                echo form_open("entry/addQues", $attributes);?>
+                
                 <div class="form-group">
-                    <label for="class">Class</label>
-                    <select class="form-control" name="class">
-						<option value="">Select...</option>
-						<option value="ug1">UG 1</option>
-						<option value="ug2">UG 2</option>
-						<option value="pg">PG</option>
-					</select>
-                    <span class="text-danger"><?php echo form_error('class'); ?></span>
+                    <label for="course">Course</label>
+                    <input class="form-control" name="course" placeholder="Course" type="text" />
+                    <span class="text-danger"><?php echo form_error('course'); ?></span>
                 </div>
 
-               
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input class="form-control" name="subject" placeholder="Subject" type="text" />
-                    <span class="text-danger"><?php echo form_error('subject'); ?></span>
-                </div>
 
                 <div class="form-group">
                     <label for="ques">Question</label>
                     <textarea class="form-control" name="ques" placeholder="type here ..." rows="4" ></textarea>
                     <span class="text-danger"><?php echo form_error('ques'); ?></span>
                 </div>
-
+                
+                
                 <div class="form-group">
-                    <button name="post" type="submit" class="btn btn-default">Post</button>
+                    <label for="op1">Option 1</label>
+                    <input class="form-control" name="op1" placeholder="Option 1" type="text" />
+                    <span class="text-danger"><?php echo form_error('op1'); ?></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="op2">Option 2</label>
+                    <input class="form-control" name="op2" placeholder="Option 2" type="text" />
+                    <span class="text-danger"><?php echo form_error('op2'); ?></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="op3">Option 3</label>
+                    <input class="form-control" name="op3" placeholder="Option 3" type="text" />
+                    <span class="text-danger"><?php echo form_error('op3'); ?></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="op4">Option 4</label>
+                    <input class="form-control" name="op4" placeholder="Option 4" type="text" />
+                    <span class="text-danger"><?php echo form_error('op4'); ?></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ans">Answer</label>
+                    <select class="form-control" name="ans">
+						<option value="">Select...</option>
+						<option value="a">Option 1</option>
+						<option value="b">Option 2</option>
+						<option value="c">Option 3</option>
+						<option value="d">Option 4</option>
+					</select>
+                    <span class="text-danger"><?php echo form_error('ans'); ?></span>
+                </div>
+                
+                <div class="form-group">
+                    <button name="post" type="submit" class="btn btn-default">Add Question</button>
                     <button name="cancel" type="reset" class="btn btn-default">Cancel</button>
                 </div>
                 <?php echo form_close(); ?>
@@ -107,48 +108,47 @@
         </div>
     </div>
 </div>
-<div align="center" id="File" class="staff">
-	<br><br><br>
-	<?php echo form_open_multipart('entry/do_upload');?>
-	<form action="" method="">
-	<label class="btn btn-primary btn-file" style="margin-left:auto;margin-right:auto;display:block;width:50%">
-		Click to Add Documents<input id="uploadInput" style="display:none" type="file" name="myfile" onchange="updateSize();" ><strong style="color: orange"> File Size: <span id="fileSize">0</span></strong>
-	</label>
-	<br>
-	<button name="fileup" type="submit" class="btn btn-success" style="margin-left:auto;margin-right:auto;display:block;"><span class="glyphicon glyphicon-cloud-upload"></span> Upload</button>
-	</form><br>
-	<p style="color: red">*Only gif,jpg,png,doc,pdf,html files allowed</p>
+
+<div id="Project" class="trainer">
+	 <div class="col-lg-12 col-sm-12">
+		 <br><br><br>
+		   <table class="table table-striped table-hover table-bordered" >
+				<thead>
+					 <tr>
+						  <th>Project Name</th>
+						  <th>Status</th>
+						  
+					</tr>
+				</thead>
+				<tbody>
+					 <?php for ($i = 0; $i < count($project); ++$i) { ?>
+						  <tr>
+							   <td><?php echo $project[$i]->pname; ?></td>
+							   <td><?php echo $project[$i]->pstatus; ?></td>
+							   <?php } ?>
+							   <?php $attributes = array("name" => "registrationform");
+									echo form_open("display/update", $attributes);?>
+							   <td><input type="text" name="status" class="form-control" placeholder='Type your Project Status ...'/></td>
+							   <td><button name="submit" type="submit" class="btn btn-default">Update Status</button></td>
+						  </tr><?php echo form_close(); ?>
+					 
+				</tbody>
+		   </table>
+	  </div>
 </div>
 
 </div>
 </body>
 <script>
-	openTab('Marks');
+	openTab('Profile');
 
 	function openTab(tabName) {
 		var i;
-		var x = document.getElementsByClassName("staff");
+		var x = document.getElementsByClassName("trainer");
 		for (i = 0; i < x.length; i++) {
 			x[i].style.display = "none";
 		}
 		document.getElementById(tabName).style.display = "block";
-	}
-	
-	function updateSize() {
-	  var nBytes = 0,
-		  oFiles = document.getElementById("uploadInput").files,
-		  nFiles = oFiles.length;
-	  for (var nFileId = 0; nFileId < nFiles; nFileId++) {
-		nBytes += oFiles[nFileId].size;
-	  }
-	  var sOutput = nBytes + " bytes";
-	  // optional code for multiples approximation
-	  for (var aMultiples = ["KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
-		sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
-	  }
-	  // end of optional code
-	  //document.getElementById("fileNum").innerHTML = nFiles;
-	  document.getElementById("fileSize").innerHTML = sOutput;
 	}
 </script>
 </html>
