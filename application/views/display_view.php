@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trainee Page</title>
+    <script src="<?php echo base_url("assets/js/jquery.min.js"); ?>"></script>
     <link href="<?php echo base_url("assets/css/bootstrap.css"); ?>" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -51,6 +52,7 @@
 			 </tr>
 		</thead>
 		<tbody>
+			<?php $ans[] = 0; $count = count($questlist);?>
 			 <?php for ($i = 0; $i < count($questlist); ++$i) { ?>
 				  <tr>
 					   <td><?php echo $i+1; ?></td>
@@ -58,7 +60,7 @@
 					   <td><?php echo $questlist[$i]->c1; ?></td>
 					   <td><?php echo $questlist[$i]->c2; ?></td>
 					   <td><?php echo $questlist[$i]->c3; ?></td>
-					   <td><?php echo $questlist[$i]->c4; $ans[$i] = $questlist[$i]->ans?></td>
+					   <td><?php echo $questlist[$i]->c4; $ans[$i] = $questlist[$i]->ans;?></td>
 					   <td><input type='text'class="form-control" id='a<?php echo $i; ?>'/></td>
 				  </tr>
 			 <?php } ?>
@@ -109,13 +111,20 @@
 		document.getElementById(tabName).style.display = "block";
 	}
 	var mark=0;
-	var ans = <?php echo json_encode($ans) ?>;
+	var ans = <?php echo json_encode($ans); ?>;
 	function valMark(){
-		for(i=0;i<=<?php count($questlist);?>;i++)
+		for(i=0;i<<?php echo $count;?>;i++)
 			if(document.getElementById('a'+i).value == ans[i])
 				mark++;
-				
-		alert(mark);	
+		$.ajax({
+            url:"<?php echo site_url('display/update_mark');?>/"+mark,
+            success:function(data)
+            {
+				alert("Your answers has been submitted");
+            }
+       });
+		
+	mark=0;	
 	}
 
 </script>

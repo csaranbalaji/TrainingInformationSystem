@@ -41,4 +41,11 @@ class Display_model extends CI_Model{
           return $this->db->query($sql);
 	 }
 	 
+	 function update_mark($mark)
+     {
+		 $id=get_cookie('id');
+		  $sql = "update trainee set mark = '" . $mark . "' where id=".$id ;
+          return $this->db->query($sql);
+	 }
+	 
 }

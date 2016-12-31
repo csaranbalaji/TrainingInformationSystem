@@ -33,6 +33,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
           //load the view
           $this->load->view('display_view',$data);
      }
+     public function update_mark($mark)
+     {
+		 
+		 $this->display_model->update_mark($mark);
+	 }
      function update()
     {
         //set validation rules
