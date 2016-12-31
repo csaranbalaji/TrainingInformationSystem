@@ -10,12 +10,12 @@
 <div class="container-fluid">
 <ul class="nav nav-tabs">
   <li><a href="javascript:void(0)" onclick="openTab('Profile')">View Students</a></li>
-  <li><a href="javascript:void(0)" onclick="openTab('Test')">Test Results</a></li>
+  <li><a href="javascript:void(0)" onclick="openTab('Test')">Questions</a></li>
   <li><a href="javascript:void(0)" onclick="openTab('Project')">Project Status</a></li>
   <li class="navbar-right"><a href="http://localhost/TrainingInformationSystem/index.php/trainer">Log Out</a></li>
 </ul>
 
-<div id="Profile" class="traine row">
+<div id="Profile" class="trainer row">
 	  <div class="col-md-7 col-md-offset-3">
 		  <br><br><br>
 		   <table class="table table-striped table-hover table-bordered" align="center">
@@ -37,8 +37,8 @@
 	  </div>
 </div>
 
-<div align="center" id="Test" class="trainer">
-	<br><br><br>
+<div id="Test" class="trainer">
+	<br>
 	<div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -110,7 +110,7 @@
 </div>
 
 <div id="Project" class="trainer">
-	 <div class="col-lg-12 col-sm-12">
+	 <div class="col-md-7 col-md-offset-3">
 		 <br><br><br>
 		   <table class="table table-striped table-hover table-bordered" >
 				<thead>
@@ -126,11 +126,7 @@
 							   <td><?php echo $project[$i]->pname; ?></td>
 							   <td><?php echo $project[$i]->pstatus; ?></td>
 							   <?php } ?>
-							   <?php $attributes = array("name" => "registrationform");
-									echo form_open("display/update", $attributes);?>
-							   <td><input type="text" name="status" class="form-control" placeholder='Type your Project Status ...'/></td>
-							   <td><button name="submit" type="submit" class="btn btn-default">Update Status</button></td>
-						  </tr><?php echo form_close(); ?>
+						  </tr>
 					 
 				</tbody>
 		   </table>
