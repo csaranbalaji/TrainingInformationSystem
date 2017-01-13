@@ -4,6 +4,8 @@ class Display_model extends CI_Model{
      {
           // Call the Model constructor
           parent::__construct();
+          $this->load->library('mongoci');
+          $this->load->driver('cache');
           $this->load->helper(array('cookie'));
      }
 
