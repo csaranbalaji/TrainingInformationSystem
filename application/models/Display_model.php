@@ -13,6 +13,7 @@ class Display_model extends CI_Model{
      function get_profile_list()
      {	
 		 $id=get_cookie('id');
+		  $this->cache->redis->save('id',$id,100);
           $sql = 'select * from trainee where id='.$id;
           $query = $this->db->query($sql);
           $result = $query->result();
