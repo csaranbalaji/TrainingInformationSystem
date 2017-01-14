@@ -76,8 +76,8 @@
 				<thead>
 					 <tr>
 						  <th>Project Name</th>
-						  <th>Status</th>
-						  
+						  <th>Previous Status</th>
+						  <th>Date with Status</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -88,7 +88,7 @@
 							   <?php } ?>
 							   <?php $attributes = array("name" => "registrationform");
 									echo form_open("display/update", $attributes);?>
-							   <td><input type="text" name="status" class="form-control" placeholder='Type your Project Status ...'/></td>
+							   <td><input type="text" name="status" class="form-control" placeholder='DD/MM/YY - status'/></td>
 							   <td><button name="submit" type="submit" class="btn btn-default">Update Status</button></td>
 						  </tr><?php echo form_close(); ?>
 					 

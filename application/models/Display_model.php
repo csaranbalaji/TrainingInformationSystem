@@ -40,10 +40,7 @@ class Display_model extends CI_Model{
      function update_status($status)
      {
 		 $id=get_cookie('id');
-		  $where = array('id'=> new MongoId($id));
-		  $update = array('$set'=>$data);
-		  $this->mongoci->db->article->update($where,$update);
-		  $sql = "update project set pstatus = '" . $status . "' where id=".$id ;
+		  $sql = "update project set pstatus = concat('".$status."<br>',pstatus) where id=".$id ;
           return $this->db->query($sql);
 	 }
 	 
