@@ -8,7 +8,18 @@ class Display_model extends CI_Model{
           $this->load->driver('cache');
           $this->load->helper(array('cookie'));
      }
+     
+	public function mongo_cursor($cursor)  // iterator to cursor and return array 
+	{
+		$data=array();
+		foreach($cursor as $user_data)
+		{
+		  $data[]=$user_data;
+		}
+		return $data;
 
+	}
+	
      //read the list from db
      function get_profile_list()
      {	
@@ -22,10 +33,14 @@ class Display_model extends CI_Model{
      
      function get_question_list()
      {
+          /* //For MySql
           $sql = 'select * from question where course="Git & SVN"';
           $query = $this->db->query($sql);
           $result = $query->result();
-          return $result;
+          return $result;*/
+          //for Mongo DB
+          $query = $this->mongoci->db->question->find();
+          return $this->mongo_cursor($query);
      }
      
      function get_project()

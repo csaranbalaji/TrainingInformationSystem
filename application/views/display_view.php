@@ -53,14 +53,14 @@
 		</thead>
 		<tbody>
 			<?php $ans[] = 0; $count = count($questlist);?>
-			 <?php for ($i = 0; $i < count($questlist); ++$i) { ?>
+			 <?php $i =0; foreach($questlist as $ques) { ?>
 				  <tr>
-					   <td><?php echo $i+1; ?></td>
-					   <td><?php echo $questlist[$i]->ques; ?></td>
-					   <td><?php echo $questlist[$i]->c1; ?></td>
-					   <td><?php echo $questlist[$i]->c2; ?></td>
-					   <td><?php echo $questlist[$i]->c3; ?></td>
-					   <td><?php echo $questlist[$i]->c4; $ans[$i] = $questlist[$i]->ans;?></td>
+					   <td><?php echo ++$i; ?></td>
+					   <td><?php echo $ques['ques']; ?></td>
+					   <td><?php echo $ques['c1']; ?></td>
+					   <td><?php echo $ques['c2']; ?></td>
+					   <td><?php echo $ques['c3']; ?></td>
+					   <td><?php echo $ques['c4']; $ans[$i] = $ques['ans'];?></td>
 					   <td><input type='text'class="form-control" id='a<?php echo $i; ?>'/></td>
 				  </tr>
 			 <?php } ?>

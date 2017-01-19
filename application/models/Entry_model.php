@@ -5,12 +5,17 @@ class Entry_model extends CI_Model
     {
         // Call the Model constructor
         parent::__construct();
+        $this->load->library('mongoci');
     }
     
     //insert into user table
     function insertQues($data)
-    {
-			return $this->db->insert('question', $data);
+    {		
+			//Mongo DB insert
+			$query = $this->mongoci->db->question->insert($data);
+			return $query;
+			//MySql insert
+			//return $this->db->insert('question', $data);
 	}
 	
 	//read the list from db
