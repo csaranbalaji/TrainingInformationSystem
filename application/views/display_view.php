@@ -55,7 +55,7 @@
 			<?php $ans[] = 0; $count = count($questlist);?>
 			 <?php $i =0; foreach($questlist as $ques) { ?>
 				  <tr>
-					   <td><?php echo ++$i; ?></td>
+					   <td><?php echo $i+1; ?></td>
 					   <td><?php echo $ques['ques']; ?></td>
 					   <td><?php echo $ques['c1']; ?></td>
 					   <td><?php echo $ques['c2']; ?></td>
@@ -63,7 +63,7 @@
 					   <td><?php echo $ques['c4']; $ans[$i] = $ques['ans'];?></td>
 					   <td><input type='text'class="form-control" id='a<?php echo $i; ?>'/></td>
 				  </tr>
-			 <?php } ?>
+			 <?php $i++;} ?>
 		</tbody>
 	</table>
 	<button id="tsubmit" onclick="valMark()" class="btn btn-default">Submit</button>
