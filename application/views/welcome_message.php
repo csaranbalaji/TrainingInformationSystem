@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 
 		<p>If you are a Trainee click this:</p>
-		<code onclick="document.location = 'index.php/trainer';">Trainee Login</code>
+		<code onclick="document.location = 'index.php/trainee';">Trainee Login</code>
 
 		<p>If you are a Trainer click this:</p>
 		<code onclick="document.location = 'index.php/trainer';">Trainer Login</code>
