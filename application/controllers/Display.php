@@ -54,8 +54,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         else
         {
 			$status=$this->input->post('status');
+			$data=$this->input->post();
             // insert form data into database
-            if ($this->display_model->update_status($status))
+            if ($this->display_model->update_status($status,$data))
             {
 				echo nl2br("\n <div class='alert alert-success' align='center'><strong>Success!</strong> Status Has Been Updated Successfully.</div>");
 				redirect('display');
