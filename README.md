@@ -1,7 +1,7 @@
 # TrainingInformationSystem
 A WebApp using CodeIgniter Framework 
 
-##Database Structure
+## Database Structure
 
 `mysql> use Training;`
 
@@ -14,7 +14,7 @@ A WebApp using CodeIgniter Framework
 | trainee            |
 | trainer            |
 
-###project
+### project
 `mysql> desc project;`
 
 | Field | Type     | Null | Key | Default | Extra |
@@ -23,7 +23,7 @@ A WebApp using CodeIgniter Framework
 | pname   | varchar(10) | YES  |     | NULL    |       |
 | pstatus | varchar(20) | YES  |     | NULL    |       |
 
-###question
+### question
 `mysql> desc question;`
 
 | Field | Type     | Null | Key | Default | Extra |
@@ -36,7 +36,7 @@ A WebApp using CodeIgniter Framework
 | c4     | varchar(10)  | YES  |     | NULL    |       |
 | ans    | char(1)      | YES  |     | NULL    |       |
 
-###trainee
+### trainee
 `mysql> desc trainee;`
 
 | Field | Type     | Null | Key | Default | Extra |
@@ -49,7 +49,7 @@ A WebApp using CodeIgniter Framework
 | mark     | int(11)     | YES  |     | NULL    |                |
 
 
-###trainer
+### trainer
 `mysql> desc trainer;`
 
 | Field | Type     | Null | Key | Default | Extra |
